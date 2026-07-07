@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-bronze-50: #fcf8f4;
+  --color-bronze-100: #f7ede3;
+  --color-bronze-200: #edd7c4;
+  --color-bronze-300: #ddb89a;
+  --color-bronze-400: #c59b7b;
+  --color-bronze-500: #a17855;
+  --color-bronze-600: #8c6239;
+  --color-bronze-700: #744f2d;
+  --color-bronze-800: #5f3f26;
+  --color-bronze-900: #4e3421;
+  --color-bronze-950: #291b10;
+
+  --color-obsidian-50: #f6f6f6;
+  --color-obsidian-100: #e7e7e7;
+  --color-obsidian-200: #d1d1d1;
+  --color-obsidian-300: #b0b0b0;
+  --color-obsidian-400: #888888;
+  --color-obsidian-500: #6d6d6d;
+  --color-obsidian-600: #5d5d5d;
+  --color-obsidian-700: #4f4f4f;
+  --color-obsidian-800: #333333;
+  --color-obsidian-900: #141414;
+  --color-obsidian-950: #080808;
+}
+
+@layer base {
+  * {
+    cursor: none !important; /* Custom Cursor */
+  }
+
+  body {
+    background-color: #080808;
+    color: #f7ede3;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar for Luxury Experience */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a17855;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c59b7b;
+  }
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 155, 123, 0.1);
+}
+
+.glass-premium {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(12, 12, 12, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 155, 123, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Glow effects */
+.glow-bronze {
+  box-shadow: 0 0 40px rgba(197, 155, 123, 0.15);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(197, 155, 123, 0.3);
+}
+
+/* GSAP animations helpers */
+.clip-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+  * {
+    cursor: auto !important;
+  }
+}

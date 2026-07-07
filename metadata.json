@@ -1,0 +1,6 @@
+{
+  "name": "Velttrix Premium Wallet Showcase",
+  "description": "A cinematic, immersive 3D showcase of the Velttrix Wallet Emblem premium—the ultimate minimalist accordion metal wallet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

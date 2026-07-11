@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ShieldCheck, Truck, RefreshCw, Sparkles, CheckCircle } from "lucide-react";
 
@@ -85,149 +85,13 @@ export default function CTA() {
               SECURE ACQUISITION PORTAL
             </div>
 
-            <AnimatePresence mode="wait">
-              {!success ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Pricing info */}
-                  <div className="flex items-baseline justify-between border-b border-bronze-500/10 pb-5">
-                    <div>
-                      <h3 className="font-display font-bold text-lg text-f7ede3">
-                        Veltrix Wallet Emblem
-                      </h3>
-                      <p className="text-xs text-bronze-400">Copper Rose Premium Edition</p>
-                    </div>
-                    <div className="text-right flex items-center space-x-3 shrink-0">
-                      <div className="text-right">
-                        <span className="block font-display text-3xl font-extrabold text-f7ede3">$9</span>
-                        <span className="block text-[9px] font-mono text-bronze-100/40 line-through">$89.00</span>
-                      </div>
-                      <span className="bg-red-600 text-white text-[10px] font-mono tracking-wider px-2 py-1 rounded font-bold uppercase shadow-md border border-red-500 animate-pulse">
-                        90% OFF
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Input fields */}
-                  <div className="space-y-4">
-                    <div>
-                      <label htmlFor="customer-name" className="block font-mono text-[9px] text-bronze-300 uppercase tracking-widest mb-1.5 font-semibold">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        id="customer-name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g. FULL NAME"
-                        className="w-full bg-obsidian-950/70 border border-bronze-500/15 py-3 px-4 rounded text-xs text-f7ede3 placeholder-bronze-100/25 focus:outline-none focus:border-bronze-400 transition-colors"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="customer-phone" className="block font-mono text-[9px] text-bronze-300 uppercase tracking-widest mb-1.5 font-semibold">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="customer-phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="e.g. +91 98765 43210"
-                        className="w-full bg-obsidian-950/70 border border-bronze-500/15 py-3 px-4 rounded text-xs text-f7ede3 placeholder-bronze-100/25 focus:outline-none focus:border-bronze-400 transition-colors"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="customer-email" className="block font-mono text-[9px] text-bronze-300 uppercase tracking-widest mb-1.5 font-semibold">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="customer-email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="e.g. imran@veltrix.com"
-                        className="w-full bg-obsidian-950/70 border border-bronze-500/15 py-3 px-4 rounded text-xs text-f7ede3 placeholder-bronze-100/25 focus:outline-none focus:border-bronze-400 transition-colors"
-                        required
-                      />
-                    </div>
-
-                    {/* Finish Selector */}
-                    <div>
-                      <span className="block font-mono text-[9px] text-bronze-300 uppercase tracking-widest mb-2 font-semibold">
-                        Select Leather/Case Finish
-                      </span>
-                      <div className="grid grid-cols-3 gap-2">
-                        {["Copper Bronze", "Stealth Black", "Titanium Silver"].map((col) => (
-                          <button
-                            type="button"
-                            key={col}
-                            onClick={() => setFinish(col)}
-                            className={`py-2 px-1 rounded text-[10px] font-mono border transition-all duration-300 ${
-                              finish === col
-                                ? "bg-bronze-950/80 border-bronze-400 text-bronze-300"
-                                : "bg-transparent border-bronze-500/10 text-bronze-100/40 hover:border-bronze-500/35 hover:text-bronze-200"
-                            }`}
-                            id={`cta-select-${col.toLowerCase().replace(" ", "-")}`}
-                          >
-                            {col}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-sm bg-gradient-to-r from-bronze-500 to-bronze-600 hover:from-bronze-400 hover:to-bronze-500 text-obsidian-950 font-mono text-xs tracking-widest font-bold uppercase transition-all duration-500 hover:shadow-[0_0_25px_rgba(197,155,123,0.35)] active:scale-98 flex items-center justify-center space-x-2"
-                    id="submit-order-btn"
-                  >
-                    <span>SUBMIT SECURE ACQUISITION</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-
-                  <div className="text-center font-mono text-[8px] text-bronze-400/40 tracking-wider">
-                    🔒 SSL 256-BIT ENCRYPTED CONNECTION
-                  </div>
-                </form>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center text-center py-10 space-y-6"
-                  id="checkout-success-container"
-                >
-                  <div className="w-16 h-16 rounded-full bg-bronze-950 border border-bronze-400/30 flex items-center justify-center text-bronze-300 shadow">
-                    <CheckCircle className="w-8 h-8" />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-display font-bold text-xl text-f7ede3">
-                      Acquisition Initiated.
-                    </h3>
-                    <p className="text-xs text-bronze-100/60 leading-relaxed font-sans font-light max-w-sm">
-                      Thank you for choosing Veltrix, <strong>{name}</strong>. An elegant confirmation summary alongside secure invoice payment links has been dispatched to <strong>{email}</strong>.
-                    </p>
-                  </div>
-                  <div className="pt-4 w-full">
-                    <button
-                      onClick={() => {
-                        setSuccess(false);
-                        setName("");
-                        setEmail("");
-                        setPhone("");
-                      }}
-                      className="w-full py-2.5 rounded border border-bronze-500/20 hover:border-bronze-400 text-bronze-300 hover:text-bronze-200 font-mono text-[10px] tracking-widest uppercase transition-colors"
-                      id="reset-order-form"
-                    >
-                      ORDER ANOTHER WALLET
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div
+  style={{ width: "100%", height: "500px" }}
+  data-fillout-id="m3jd1dABxyus"
+  data-fillout-embed-type="standard"
+  data-fillout-inherit-parameters
+  data-fillout-dynamic-resize
+></div>
           </div>
         </div>
       </div>

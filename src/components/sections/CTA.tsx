@@ -118,7 +118,7 @@ export default function CTA() {
                         id="customer-name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g. Imran Raza"
+                        placeholder="e.g. FULL NAME"
                         className="w-full bg-obsidian-950/70 border border-bronze-500/15 py-3 px-4 rounded text-xs text-f7ede3 placeholder-bronze-100/25 focus:outline-none focus:border-bronze-400 transition-colors"
                         required
                       />

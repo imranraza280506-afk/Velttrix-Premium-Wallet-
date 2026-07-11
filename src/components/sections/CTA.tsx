@@ -13,6 +13,17 @@ export default function CTA() {
   const [phone, setPhone] = useState("");
   const [finish, setFinish] = useState("Copper Bronze");
   const [success, setSuccess] = useState(false);
+ 
+useEffect(() => {
+  const script = document.createElement("script");
+  script.src = "https://server.fillout.com/embed/v1/";
+  script.async = true;
+  document.body.appendChild(script);
+
+  return () => {
+    document.body.removeChild(script);
+  };
+}, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
